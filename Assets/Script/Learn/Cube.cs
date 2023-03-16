@@ -11,8 +11,8 @@ public class Cube : MonoBehaviour
         {
             Debug.Log("객체를 찾을수 없습니다");
         }
-        Debug.Log(obj.transform.position.x);
-        obj.GetComponent<Sphere>().WhoAmI("JIHUN");
+        //Debug.Log(obj.transform.position.x);
+        Debug.Log(obj.GetComponent<Sphere>().WhoAmI("JIHUN"));
         
 
         GameObject obj2 = GameObject.FindWithTag("Sphere");
@@ -20,7 +20,7 @@ public class Cube : MonoBehaviour
         {
             Debug.Log("객체를 찾을수 없습니다");
         }
-        Debug.Log(obj.transform.position.x);
+       // Debug.Log(obj.transform.position.x);
 
         
     }

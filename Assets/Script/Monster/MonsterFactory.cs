@@ -31,12 +31,12 @@ public class MonsterFactory : MonoBehaviour
 }
 
 [System.Serializable]
-public class MonsterDB
+/*public class MonsterDB
 {
     public string Name;
     public float Speed;
     public float Hp;
-}
+}*/
 
 public enum MonsterType
 {

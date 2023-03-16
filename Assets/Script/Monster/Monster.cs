@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Monster 
     {
-    
+
+    public Monster(string name, float speed)
+    {
+        this.Name = name;
+        this.Speed = speed;
+    }
+
     public string Name { get; private set; }
     public float Speed { get; set; }
 
-    public Monster(string Name, float Speed)
-    {
-        this.Name = Name;
-        this.Speed = Speed;
-    }
+   
 }
 
 
