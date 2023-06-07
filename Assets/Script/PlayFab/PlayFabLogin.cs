@@ -8,7 +8,7 @@ using PlayFab.ClientModels;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class PlayFabLoginManager : MonoBehaviour
+public class PlayFabLogin: MonoBehaviour
 {
     /*
     public InputField inputUserID;
