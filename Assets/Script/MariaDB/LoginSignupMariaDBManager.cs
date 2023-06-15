@@ -127,7 +127,7 @@ public class LoginSignupMariaDBManager : MonoBehaviour
         if (CheckDataForMariaDB(1))
         {
             Debug.Log("Signup is continued ..");
-            RegisterUserToMariaDBPlayer();
+            //RegisterUserToMariaDBPlayer();
             if (RegisterUserToMariaDBPlayer())
             {
                 inputUserID.text = "";
@@ -196,8 +196,8 @@ public class LoginSignupMariaDBManager : MonoBehaviour
         if (CheckDataForMariaDB(2))
         {
             Debug.Log("Login is continued ..");
-            int res = LoginToMariaDBPlayer();
-            if (res >= 0)
+            int res = LoginToMariaDBPlayer(); //playerID반환 유저가 아무도 없다면 -1 반환 
+            if (res > 0) 
             {
                 GameObject.Find("GameManager").GetComponent<GameManager>().myGlobalPlayFabId = res.ToString();
                 LoginToMariaDBLoginHistory(res);
@@ -227,18 +227,18 @@ public class LoginSignupMariaDBManager : MonoBehaviour
         );
         Debug.Log(commandTextSelect);
 
-        myConnection.Open();
+        myConnection.Open(); //데이터 오픈
 
-        //MySqlDataAdapter adapter = new MySqlDataAdapter(commandTextSelect, myConnection);
-        //adapter.Fill(dt);
+        //MySqlDataAdapter adapter = new MySqlDataAdapter(commandTextSelect, myConnection);  //어댑터 만든 다음 
+        //adapter.Fill(dt); //Fill시켜야 하는데, 요즘 리더에서 이 기능을 다 해주는 느낌이라 주석처리 
         myCommand = new MySqlCommand(commandTextSelect, myConnection);
         myDataReader = myCommand.ExecuteReader();
 
-        int playerID = -1;
-        while (myDataReader.Read())
+        int playerID = -1;  //데이터가 없는것
+        while (myDataReader.Read()) //데이터가 여러개있기 때문에 반복해서 접근 
         {
             Debug.Log(myDataReader[0] + "-" + myDataReader[1] + "-" + myDataReader[3] + "-" + myDataReader[6]);
-            playerID = (int)myDataReader[0];
+            playerID = (int)myDataReader[0]; //ID(key)는 하나씩 증가, 14번째 회원가입 한 유저는 ID 14. 
         }
 
         myConnection.Close();
@@ -249,6 +249,7 @@ public class LoginSignupMariaDBManager : MonoBehaviour
 
     private void LoginToMariaDBLoginHistory(int id)
     {
+        //다른 테이블인 LoginHistory테이블에 데이터 넣어주는것 
         string currentDateTimeValue = "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'";
         string usernameValue = "'" + username + "'";
 
