@@ -58,6 +58,7 @@ public class Player : MonoBehaviour
            // particle = other.gameObject.GetComponentInChildren<ParticleSystem>();
            // particle.Play();
             CanvasManager.Instance.UpdateText(Point.ToString());
+            ExamManager.Instance.UpdateWpointsToMariaDBPlayer();
         }
         if (other.CompareTag("Wall"))
         {
