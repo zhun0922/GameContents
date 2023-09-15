@@ -15,15 +15,15 @@ public class GameManager : MonoBehaviour
     public string myGlobalPlayFabId;
 
     [System.NonSerialized]
-    public static GameManager Instance = null;
+    public static GameManager instance = null;
 
     private void Awake()
     {
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
         }
-        else if (Instance != this)
+        else if (instance != this)
         {
             Destroy(this.gameObject);
         }

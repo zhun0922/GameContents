@@ -70,8 +70,7 @@ public class PlayFabLogin: MonoBehaviour
         Debug.Log("Login successfully");
         displayMessage.text = "Login successfully [" + result.PlayFabId + "]";
 
-        //GameObject.Find("GameManager").GetComponent<GameManager>().myGlobalPlayFabId = result.PlayFabId;
-        GameManager.Instance.myGlobalPlayFabId = result.PlayFabId;
+        GameObject.Find("GameManager").GetComponent<GameManager>().myGlobalPlayFabId = result.PlayFabId;
         StartGame();
     }
 
