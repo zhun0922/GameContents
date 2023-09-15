@@ -65,10 +65,11 @@ public class LoginSignupMariaDBManager : MonoBehaviour
         if (myConnection == null)
         {
             string connectionString =
-                "SERVER=61.245.246.242; Port=3308; " +
-                "DATABASE=metaverse; " +
-                "UID=wonkwangdc; " +
-                "PASSWORD=wkdc2017;";
+                "SERVER=localhost; Port=3308; " +
+                "DATABASE=gamecontent; " +
+                "UID=root; " +
+                "PASSWORD=dawson121;" + 
+                "CharSet=utf8";
             try
             {
                 myConnection = new MySqlConnection(connectionString);
@@ -199,7 +200,8 @@ public class LoginSignupMariaDBManager : MonoBehaviour
             int res = LoginToMariaDBPlayer(); //playerID반환 유저가 아무도 없다면 -1 반환 
             if (res > 0) 
             {
-                GameObject.Find("GameManager").GetComponent<GameManager>().myGlobalPlayFabId = res.ToString();
+                //GameObject.Find("GameManager").GetComponent<GameManager>().myGlobalPlayFabId = res.ToString();
+                GameManager.Instance.myGlobalPlayFabId = res.ToString();
                 LoginToMariaDBLoginHistory(res);
             }
             else
@@ -223,7 +225,7 @@ public class LoginSignupMariaDBManager : MonoBehaviour
         //DataTable dt = new DataTable();
 
         string commandTextSelect = string.Format(
-            "SELECT * FROM player WHERE username='" + username + "' AND password='" + password + "'"
+            "SELECT * FROM player WHERE username='" + username + "' AND password='" + password + "'" 
         );
         Debug.Log(commandTextSelect);
 
